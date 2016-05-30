@@ -1,0 +1,27 @@
+# ninja log v5
+0	214	0	clean_sa	f9f1bd2d8dff5d25
+1749	2156	0	ph1	60feeb87b71a4b55
+16	2170	0	src/connection.o	bd9f4a734f102de2
+214	235	0	clean	d59b6dac04fa9b5d
+5	2162	0	src/autoconnection.o	dfb2adfd172a1aad
+26	2233	0	src/timerecord.o	88afe0ae8a711c05
+19	2326	0	src/control.o	346892c8796e0e43
+5	1748	0	src/main_setting.o	82a0b6ce2838d20b
+675	8582	0	res/edje/timer.edj	f8e4bfce504d27e7
+6	1679	0	src/timerecord.o	88afe0ae8a711c05
+1680	2102	0	ph1	60feeb87b71a4b55
+4	1723	0	src/timerecord.o	88afe0ae8a711c05
+1724	2107	0	ph1	60feeb87b71a4b55
+5	1722	0	src/main_setting.o	82a0b6ce2838d20b
+1723	2110	0	ph1	60feeb87b71a4b55
+5	1737	0	src/main_setting.o	82a0b6ce2838d20b
+1738	2136	0	ph1	60feeb87b71a4b55
+5	1734	0	src/main_setting.o	82a0b6ce2838d20b
+1734	2121	0	ph1	60feeb87b71a4b55
+8	2446	0	src/autoconnection.o	dfb2adfd172a1aad
+31	2456	0	src/connection.o	bd9f4a734f102de2
+57	2551	0	src/main_setting.o	82a0b6ce2838d20b
+68	2562	0	src/timerecord.o	88afe0ae8a711c05
+37	2625	0	src/control.o	346892c8796e0e43
+2626	3057	0	ph1	60feeb87b71a4b55
+9	1076	0	ph1	60feeb87b71a4b55
