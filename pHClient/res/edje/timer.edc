@@ -103,7 +103,6 @@ images {
 	image: "timer_progress_3.png" COMP;
 	image: "timer_progress_2.png" COMP;
 	image: "timer_progress_1.png" COMP;
-	image: "unknown.png" COMP;
 }
 
 collections {
@@ -453,7 +452,7 @@ collections {
 					rel2 { relative: 1.0 1.0; to: "btn"; }
 					fixed: 1 1;
 					image {
-						normal: "unknown.png";
+						normal: "timer_btn_reset.png";
 					}
 				}
 			}

@@ -25,3 +25,13 @@
 37	2625	0	src/control.o	346892c8796e0e43
 2626	3057	0	ph1	60feeb87b71a4b55
 9	1076	0	ph1	60feeb87b71a4b55
+2	2264	0	src/autoconnection.o	8f781348d45000ef
+712	2295	0	src/connection.o	9d2fe52707db0fcd
+784	2332	0	src/timerecord.o	bdd61e8ba54ca041
+753	2348	0	src/control.o	f2f6af406d94efcc
+912	4899	0	res/edje/timer.edj	90b1ea60114033bf
+3	359	0	src/main_setting.o	cccd9c10382e0b99
+359	4558	0	ph1	d10e9bf9072c3c42
+3	371	0	src/main_setting.o	cccd9c10382e0b99
+371	594	0	ph1	d10e9bf9072c3c42
+2	997	0	res/edje/timer.edj	90b1ea60114033bf

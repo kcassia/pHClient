@@ -128,60 +128,13 @@ void clicked_cb(void *data, Evas_Object *obj, void *event_info) {
 
 }
 
-static void create_base_gui(void* data) {
+static void create_main_gui (void *data, Evas_Object *obj, void *event_info) {
    /* Window */
    appdata_s *ad = data;
    Elm_Object_Item *nf_it;
    Evas_Object *layout;
-   //hand = 0;
-   ad->win = elm_win_util_standard_add(PACKAGE, PACKAGE);
-   elm_win_autodel_set(ad->win, EINA_TRUE);
 
-   if (elm_win_wm_rotation_supported_get(ad->win)) {
-      int rots[4] = { 0, 90, 180, 270 };
-      elm_win_wm_rotation_available_rotations_set(ad->win,
-            (const int *) (&rots), 4);
-   }
-
-   evas_object_smart_callback_add(ad->win, "delete,request",
-         win_delete_request_cb, NULL);
-//      eext_object_event_callback_add(ad->win, EEXT_CALLBACK_BACK, win_back_cb, ad);
-
-   /* Conformant */
-   ad->conform = elm_conformant_add(ad->win);
-   evas_object_size_hint_weight_set(ad->conform, EVAS_HINT_EXPAND,EVAS_HINT_EXPAND);
-   elm_win_resize_object_add(ad->win, ad->conform);
-   evas_object_show(ad->conform);
-
-//   elm_layout_theme_set(layout,)
-
-   ad->naviframe = elm_naviframe_add(ad->conform);
-
-   //eext_object_event_callback_add(ad->naviframe, EEXT_CALLBACK_BACK, win_back_cb, NULL);
-   eext_object_event_callback_add(ad->naviframe, EEXT_CALLBACK_BACK, eext_naviframe_back_cb, NULL);
-   elm_object_content_set(ad->conform, ad->naviframe);
-   evas_object_show(ad->conform);
-
-   Evas_Object *popup;
-   popup = elm_popup_add(ad->conform);
-   elm_object_style_set(popup, "circle");
-   Evas_Object *layoutp = elm_layout_add(popup);
-   elm_layout_theme_set(layoutp, "layout", "popup", "content/circle");
-   evas_object_size_hint_weight_set(layoutp, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-
-   Evas_Object *pop = elm_image_add(popup);
    char buf[PATH_MAX];
-   snprintf(buf, sizeof(buf), "/opt/usr/apps/%s/res/images/logo.png", PACKAGE);
-   elm_image_file_set(pop, buf, NULL);
-   evas_object_show(pop);
-   evas_object_size_hint_align_set(pop, EVAS_HINT_FILL, EVAS_HINT_FILL);
-   evas_object_size_hint_weight_set(pop, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-   elm_object_part_content_set(layoutp, "elm.swallow.content", pop);
-   elm_object_content_set(popup, layoutp);
-   evas_object_show(popup);
-   elm_popup_timeout_set(popup, 2.0);
-
-
    layout = elm_layout_add(ad->naviframe);
    Evas_Object *box = elm_box_add(ad->naviframe);
    elm_box_horizontal_set(box, EINA_FALSE);
@@ -295,15 +248,70 @@ static void create_base_gui(void* data) {
    evas_object_size_hint_align_set(box2, EVAS_HINT_FILL, EVAS_HINT_FILL);
    elm_box_pack_end(box, box2);
 
-   /* Show window after base gui is set up */
-   evas_object_show(ad->win);
-
 //   nf_it = elm_naviframe_item_push(ad->naviframe, "잉?", NULL, NULL, box, NULL);
 
    nf_it = elm_naviframe_item_push(ad->naviframe,NULL,NULL,NULL,box,NULL);
    elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
    elm_naviframe_item_pop_cb_set(nf_it, naviframe_pop_cb, NULL);
 }
+
+
+void create_popup (appdata_s *ad)
+{
+	   Evas_Object *popup;
+	   popup = elm_popup_add(ad->conform);
+	   elm_object_style_set(popup, "circle");
+	   Evas_Object *layout = elm_layout_add(popup);
+	   elm_layout_theme_set(layout, "layout", "popup", "content/circle");
+	   evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+
+	   Evas_Object *pop = elm_image_add(popup);
+	   char buf[PATH_MAX];
+	   snprintf(buf, sizeof(buf), "/opt/usr/apps/%s/res/images/logo.png", PACKAGE);
+	   elm_image_file_set(pop, buf, NULL);
+	   evas_object_show(pop);
+	   evas_object_size_hint_align_set(pop, EVAS_HINT_FILL, EVAS_HINT_FILL);
+	   evas_object_size_hint_weight_set(pop, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	   elm_object_part_content_set(layout, "elm.swallow.content", pop);
+	   elm_object_content_set(popup, layout);
+	   evas_object_show(popup);
+	   elm_popup_timeout_set(popup, 2.0);
+
+	   evas_object_smart_callback_add(popup, "timeout", create_main_gui, ad);
+}
+
+
+static void create_base_gui(void* data) {
+	/* Window */
+	appdata_s *ad = data;
+	ad->win = elm_win_util_standard_add(PACKAGE, PACKAGE);
+	elm_win_autodel_set(ad->win, EINA_TRUE);
+
+	if (elm_win_wm_rotation_supported_get(ad->win)) {
+		int rots[4] = { 0, 90, 180, 270 };
+		elm_win_wm_rotation_available_rotations_set(ad->win,
+				(const int *) (&rots), 4);
+	}
+	evas_object_smart_callback_add(ad->win, "delete,request",
+			win_delete_request_cb, NULL);
+	//      eext_object_event_callback_add(ad->win, EEXT_CALLBACK_BACK, win_back_cb, ad);
+	/* Conformant */
+	ad->conform = elm_conformant_add(ad->win);
+	evas_object_size_hint_weight_set(ad->conform, EVAS_HINT_EXPAND,EVAS_HINT_EXPAND);
+	elm_win_resize_object_add(ad->win, ad->conform);
+	evas_object_show(ad->conform);
+
+	//   elm_layout_theme_set(layout,)
+	ad->naviframe = elm_naviframe_add(ad->conform);
+
+	eext_object_event_callback_add(ad->naviframe, EEXT_CALLBACK_BACK, eext_naviframe_back_cb, NULL);
+	elm_object_content_set(ad->conform, ad->naviframe);
+	evas_object_show(ad->conform);
+	create_popup (ad);
+
+	evas_object_show(ad->win);
+}
+
 
 static bool app_create(void *data) {
    /* Hook to take necessary actions before main event loop starts

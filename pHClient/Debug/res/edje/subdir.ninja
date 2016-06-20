@@ -4,6 +4,6 @@
 
 
 edctool = edje_cc
-edcflags = -id "C:/Users/Jun/tizen-workspace/PH1/PH1/edje/images" -id "C:/tizen-sdk/tools/enventor/share/enventor/images" -sd "C:/Users/Jun/tizen-workspace/PH1/PH1/edje/sounds" -sd "C:/tizen-sdk/tools/enventor/share/enventor/sounds" -fd "C:/Users/Jun/tizen-workspace/PH1/PH1/edje/fonts" -fd "C:/tizen-sdk/tools/enventor/share/enventor/fonts"
+edcflags = -id "D:/Ajou/PH1/PH1/edje/images" -id "D:/Ajou/TizenSDK/tools/enventor/share/enventor/images" -sd "D:/Ajou/PH1/PH1/edje/sounds" -sd "D:/Ajou/TizenSDK/tools/enventor/share/enventor/sounds" -fd "D:/Ajou/PH1/PH1/edje/fonts" -fd "D:/Ajou/TizenSDK/tools/enventor/share/enventor/fonts"
 
 build res/edje/timer.edj: build_edc ../res/edje/timer.edc 
